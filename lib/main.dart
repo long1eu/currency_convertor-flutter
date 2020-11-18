@@ -25,6 +25,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // todo: don't use var
   var _currencies = ['Ron', 'Dollar', 'Euro'];
   String _currencies2 = 'Ron';
   String _currencies3 = 'Dollar';
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (_currencies2 == 'Ron') {
         // ?:
         final double ratio = _currencies3 == 'Euro' ? 0.21 : 0.24;
-        amountChanged = double.parse(money) * ratio;
+        amountChanged = double.tryParse(money) * ratio;
       } //Ron convertor
 
       if (_currencies2 == 'Dollar') {
@@ -61,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.red,
           title: Text(
             widget.title,
-          )),
+          )), // todo: trailing comma
+      // todo; use the backgroundColor param of Scaffold
       body: Container(
           color: Colors.grey[400],
           child: Column(
@@ -74,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderSide: const BorderSide(color: Colors.red),
                   ),
                 ),
-
+                // todo: format the code
                 keyboardType: TextInputType.number,
                 onChanged: (String value) {
                   setState(() {
@@ -105,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }).toList(),
                 onChanged: (String newValueSelected) {
                   setState(() {
+                    // todo: only use this is there is a naming conflict
                     this._currencies3 = newValueSelected;
                   });
                 },
@@ -158,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ],
                       );
-                    }
+                    } // todo: trailing comma
                   );
                 },
               ),
